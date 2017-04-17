@@ -1,0 +1,19 @@
+tenmado THANKS list
+$Id: THANKS,v 1.10 2003/07/11 15:26:04 oohara Exp $
+
+* special thanks to
+
+  - TREASURE, a game software company in Japan, whose arcade game "IKARUGA"
+    influenced the game design of tenmado a lot
+    http://www.treasure-inc.co.jp/
+
+  - Yuusuke HASHIMOTO, the original author of xsoldier (yet another free shoot
+    'em up game, which I learned action game programming in C from)
+    <hachi@pm.highway.ne.jp>
+
+  - Junichi Uekawa, who motivated me to make this game (he may be unaware
+    of it, though)
+    <dancer@netfort.gr.jp>
+
+  - shinichiro.h, who made a win32 port of tenmado
+    <s31552@mail.ecc.u-tokyo.ac.jp>

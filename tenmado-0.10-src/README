@@ -1,0 +1,162 @@
+tenmado --- hard-core shoot 'em up game in blue-or-red world
+by Oohara Yuuma <oohara@libra.interq.or.jp>
+published by Project Geeste
+
+$Id: README,v 1.41 2012/01/28 12:42:40 oohara Exp $
+
+* what is tenmado
+
+tenmado is a vertically scrolling, late 1990s style (that is, a massive
+number of enemy shots against a smaller-than-it-looks spaceship) shoot 'em
+up game.  A very accurate collision detection makes it a game of
+dexterity.  If something looks like a triangle, it is a triangle, not
+a rectangle of similar size.
+
+However, surviving is only 20% of the game.  The main feature of tenmado
+is the "color chain bonus".  You can get a very big score (about 100 times
+bigger than a normal enemy-destruction point) by destroying enemies of
+the same color successively.  It is easy or difficult depending on how
+greedy you are.
+
+* how to install tenmado
+
+See the file INSTALL for information about how to install tenmado.
+In short, install libc, libSDL, libSDL_image, then type
+1) ./configure
+2) make
+3) make install
+If you are installing as root, think about the permission of
+the high score files.
+
+* command line options
+
+--dump _stage_
+Write high score data to standard output and exit.  Usually you save
+the output in a file and later use that file as the input of --undump.
+_stage_ must be between 0 and 5.  _stage_ 0 means total score.  _stage_
+1 -- 5 means each stage score.
+
+--full-screen
+Run the game in the full screen mode.
+
+--help
+Print a help message and exit.
+
+--slow
+Run the game at the half speed.  Technically, the length of waiting between
+each frame is doubled.  This slows down everything in the game, including
+your ship.  The idea is to study the enemy formations for a later (normal
+speed) play.  The animation may be rough because this option gives you
+only about 16 fps.  You can't enter the high score lists with this option.
+
+--stage _stage_
+Start the game at the specified stage.  _stage_ must be between 1 and 5.
+Note that you can play only one stage (the specified one) and you can't
+enter the high score lists.
+
+--undump _stage_
+Read high score data from standard input, save them and exit.
+The input is usually the output of --dump .  _stage_ must be between
+0 and 5.  _stage_ 0 means total score.  _stage_ 1 -- 5 means each
+stage score.  Only the superuser may use this option.
+
+--undump-default
+If at least one high score list is empty, read the default high score data,
+save them and exit.  If not, do nothing.  The main purpose of this option is
+to create high score database files at installation time so that you can
+set their permission.
+
+--version
+Print version information, license information and the disclaimer, then exit.
+
+* key control
+
+cursor keys     move
+space           shoot (auto-repeat)
+ESC             quit
+p               pause/continue
+
+A joystick is also available for move and shoot.  Note that you must
+plug the joystick before you invoke tenmado.
+
+The game is paused if the mouse cursor leaves the window.  This prevents
+you from being killed while you does not have the focus on the window.
+
+* your weapon and your ship
+
+The player shot turns black as it flies.  A black shot deals 1 damage.
+(See the hit status at the upper left corner of the window.)  A non-black
+shot deals 2 damage.  Keep close to an enemy and let your shots hit it
+before they turn black to destroy it quickly.
+
+If your ship gets hit by an enemy shot, an enemy ship or any other obstacle,
+your ship is destroyed.  If you have no more ship, you lose the game.
+The black circle at the center is the only weak point of your ship.
+The rest is safe.
+
+* colors of the enemy and the color chain bonus
+
+You can get an additional score by destroying enemies of the same color
+successively.  This is called the "color chain bonus".  (See the chain
+status at the upper right corner of the window.)  The color of your ship
+indicates which color of enemy you should destroy to get the color chain
+bonus.
+
+number of chains     bonus point
+   1                      1
+   2                      2
+   3                      4
+   4                      8
+   5                     16
+   6                     32
+   7                     64
+   8                    128
+   9                    256
+  10                    512
+  11+                  1024 
+
+There are 4 colors of enemy --- blue, red, purple and green.  Blue and
+red are the basic colors.  Purple is special --- you always get the color
+chain bonus when you destroy a purple enemy no matter which color the enemy
+you destroyed last is, and you always get the color chain bonus when you
+destroy an enemy of any color if the enemy you destroyed last is purple.
+You cannot destroy a green enemy.
+
+* stages and the ship bonus
+
+There are 5 stages in this game.  If you destroy the boss enemy which
+appears at the end of each stage, you can go to the next stage.  If you
+clear all the stages, each remaining (unused) ship is worth 30,000 points.
+You get an additional ship for each 200,000 points.
+
+* if the game is too slow
+
+tenmado can be painfully slow if you don't have a good CPU (Pentium 4 or
+better is recommended).  In this case, use top(1) to see what is consuming
+CPU time.  Usually it is the X Window System.  Reducing the color depth
+of the screen (to 16 or 8 bpp) and restarting the X server will improve
+the performance a lot.  If your X server is a precompiled binary package,
+downloading its source and recompiling it with customized optimization
+options may work a little.
+
+* license
+
+See the file LICENSE for information about the license.  In short,
+the license is GPL exactly version 2 or the Artistic License Version
+2.0beta5, whichever you like.
+
+* contact information
+
+Please send bug reports or comments to Oohara Yuuma
+<oohara@libra.interq.or.jp>.  Also check the tenmado webpage:
+http://www.interq.or.jp/libra/oohara/tenmado/index.html
+
+* history
+
+The initial version of tenmado was released on July 14, 2002.
+"tenmado" is a Japanese word meaning "skylight", a window on a roof.
+I picked this word because I wanted something related to the sky
+and unique to this project.
+
+The stage data, "happy L", was dedicated to Ryuji Akai, who knew L.
+No, I won't tell you who L is.

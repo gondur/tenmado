@@ -1,0 +1,173 @@
+/* $Id: tenm_input.h,v 1.28 2002/07/13 07:50:20 oohara Exp $ */
+
+#ifndef __TENM_INPUT_H__
+#define __TENM_INPUT_H__
+
+#include <SDL.h>
+
+typedef SDLKey tenm_key;
+
+/* we assume int is at least 32 bit long, so 16 is a safe value */
+#define TENM_NUMBER_KEY_MAX 16
+
+/* renaming key flags just for its own sake --- well, it will save you
+ * when you try to port this to non-SDL system
+ */
+#define TENM_KEY_BACKSPACE SDLK_BACKSPACE
+#define TENM_KEY_TAB SDLK_TAB
+#define TENM_KEY_CLEAR SDLK_CLEAR
+#define TENM_KEY_RETURN SDLK_RETURN
+#define TENM_KEY_PAUSE SDLK_PAUSE
+#define TENM_KEY_ESCAPE SDLK_ESCAPE
+#define TENM_KEY_SPACE SDLK_SPACE
+#define TENM_KEY_EXCLAIM SDLK_EXCLAIM
+#define TENM_KEY_QUOTEDBL SDLK_QUOTEDBL
+#define TENM_KEY_HASH SDLK_HASH
+#define TENM_KEY_DOLLAR SDLK_DOLLAR
+#define TENM_KEY_AMPERSAND SDLK_AMPERSAND
+#define TENM_KEY_QUOTE SDLK_QUOTE
+#define TENM_KEY_LEFTPAREN SDLK_LEFTPAREN
+#define TENM_KEY_RIGHTPAREN SDLK_RIGHTPAREN
+#define TENM_KEY_ASTERISK SDLK_ASTERISK
+#define TENM_KEY_PLUS SDLK_PLUS
+#define TENM_KEY_COMMA SDLK_COMMA
+#define TENM_KEY_MINUS SDLK_MINUS
+#define TENM_KEY_PERIOD SDLK_PERIOD
+#define TENM_KEY_SLASH SDLK_SLASH
+#define TENM_KEY_0 SDLK_0
+#define TENM_KEY_1 SDLK_1
+#define TENM_KEY_2 SDLK_2
+#define TENM_KEY_3 SDLK_3
+#define TENM_KEY_4 SDLK_4
+#define TENM_KEY_5 SDLK_5
+#define TENM_KEY_6 SDLK_6
+#define TENM_KEY_7 SDLK_7
+#define TENM_KEY_8 SDLK_8
+#define TENM_KEY_9 SDLK_9
+#define TENM_KEY_COLON SDLK_COLON
+#define TENM_KEY_SEMICOLON SDLK_SEMICOLON
+#define TENM_KEY_LESS SDLK_LESS
+#define TENM_KEY_EQUALS SDLK_EQUALS
+#define TENM_KEY_GREATER SDLK_GREATER
+#define TENM_KEY_QUESTION SDLK_QUESTION
+#define TENM_KEY_AT SDLK_AT
+#define TENM_KEY_LEFTBRACKET SDLK_LEFTBRACKET
+#define TENM_KEY_BACKSLASH SDLK_BACKSLASH
+#define TENM_KEY_RIGHTBRACKET SDLK_RIGHTBRACKET
+#define TENM_KEY_CARET SDLK_CARET
+#define TENM_KEY_UNDERSCORE SDLK_UNDERSCORE
+#define TENM_KEY_BACKQUOTE SDLK_BACKQUOTE
+#define TENM_KEY_a SDLK_a
+#define TENM_KEY_b SDLK_b
+#define TENM_KEY_c SDLK_c
+#define TENM_KEY_d SDLK_d
+#define TENM_KEY_e SDLK_e
+#define TENM_KEY_f SDLK_f
+#define TENM_KEY_g SDLK_g
+#define TENM_KEY_h SDLK_h
+#define TENM_KEY_i SDLK_i
+#define TENM_KEY_j SDLK_j
+#define TENM_KEY_k SDLK_k
+#define TENM_KEY_l SDLK_l
+#define TENM_KEY_m SDLK_m
+#define TENM_KEY_n SDLK_n
+#define TENM_KEY_o SDLK_o
+#define TENM_KEY_p SDLK_p
+#define TENM_KEY_q SDLK_q
+#define TENM_KEY_r SDLK_r
+#define TENM_KEY_s SDLK_s
+#define TENM_KEY_t SDLK_t
+#define TENM_KEY_u SDLK_u
+#define TENM_KEY_v SDLK_v
+#define TENM_KEY_w SDLK_w
+#define TENM_KEY_x SDLK_x
+#define TENM_KEY_y SDLK_y
+#define TENM_KEY_z SDLK_z
+#define TENM_KEY_DELETE SDLK_DELETE
+#define TENM_KEY_KP0 SDLK_KP0
+#define TENM_KEY_KP1 SDLK_KP1
+#define TENM_KEY_KP2 SDLK_KP2
+#define TENM_KEY_KP3 SDLK_KP3
+#define TENM_KEY_KP4 SDLK_KP4
+#define TENM_KEY_KP5 SDLK_KP5
+#define TENM_KEY_KP6 SDLK_KP6
+#define TENM_KEY_KP7 SDLK_KP7
+#define TENM_KEY_KP8 SDLK_KP8
+#define TENM_KEY_KP9 SDLK_KP9
+#define TENM_KEY_KP_PERIOD SDLK_KP_PERIOD
+#define TENM_KEY_KP_DIVIDE SDLK_KP_DIVIDE
+#define TENM_KEY_KP_MULTIPLY SDLK_KP_MULTIPLY
+#define TENM_KEY_KP_MINUS SDLK_KP_MINUS
+#define TENM_KEY_KP_PLUS SDLK_KP_PLUS
+#define TENM_KEY_KP_ENTER SDLK_KP_ENTER
+#define TENM_KEY_KP_EQUALS SDLK_KP_EQUALS
+#define TENM_KEY_UP SDLK_UP
+#define TENM_KEY_DOWN SDLK_DOWN
+#define TENM_KEY_RIGHT SDLK_RIGHT
+#define TENM_KEY_LEFT SDLK_LEFT
+#define TENM_KEY_INSERT SDLK_INSERT
+#define TENM_KEY_HOME SDLK_HOME
+#define TENM_KEY_END SDLK_END
+#define TENM_KEY_PAGEUP SDLK_PAGEUP
+#define TENM_KEY_PAGEDOWN SDLK_PAGEDOWN
+#define TENM_KEY_F1 SDLK_F1
+#define TENM_KEY_F2 SDLK_F2
+#define TENM_KEY_F3 SDLK_F3
+#define TENM_KEY_F4 SDLK_F4
+#define TENM_KEY_F5 SDLK_F5
+#define TENM_KEY_F6 SDLK_F6
+#define TENM_KEY_F7 SDLK_F7
+#define TENM_KEY_F8 SDLK_F8
+#define TENM_KEY_F9 SDLK_F9
+#define TENM_KEY_F10 SDLK_F10
+#define TENM_KEY_F11 SDLK_F11
+#define TENM_KEY_F12 SDLK_F12
+#define TENM_KEY_F13 SDLK_F13
+#define TENM_KEY_F14 SDLK_F14
+#define TENM_KEY_F15 SDLK_F15
+#define TENM_KEY_NUMLOCK SDLK_NUMLOCK
+#define TENM_KEY_CAPSLOCK SDLK_CAPSLOCK
+#define TENM_KEY_SCROLLOCK SDLK_SCROLLOCK
+#define TENM_KEY_RSHIFT SDLK_RSHIFT
+#define TENM_KEY_LSHIFT SDLK_LSHIFT
+#define TENM_KEY_RCTRL SDLK_RCTRL
+#define TENM_KEY_LCTRL SDLK_LCTRL
+#define TENM_KEY_RALT SDLK_RALT
+#define TENM_KEY_LALT SDLK_LALT
+#define TENM_KEY_RMETA SDLK_RMETA
+#define TENM_KEY_LMETA SDLK_LMETA
+#define TENM_KEY_LSUPER SDLK_LSUPER
+#define TENM_KEY_RSUPER SDLK_RSUPER
+#define TENM_KEY_MODE SDLK_MODE
+#define TENM_KEY_HELP SDLK_HELP
+#define TENM_KEY_PRINT SDLK_PRINT
+#define TENM_KEY_SYSREQ SDLK_SYSREQ
+#define TENM_KEY_BREAK SDLK_BREAK
+#define TENM_KEY_MENU SDLK_MENU
+#define TENM_KEY_POWER SDLK_POWER
+#define TENM_KEY_EURO SDLK_EURO
+
+/* for the return value of tenm_joystick_init() */
+#define TENM_JOYSTICK_INIT_SUCCESS 0
+#define TENM_JOYSTICK_INIT_NO_JOYSTICK 1
+#define TENM_JOYSTICK_INIT_ERROR 2
+
+/* for direction (arg 1) of tenm_joystick_map_axis() */
+#define TENM_JOYSTICK_UP 0
+#define TENM_JOYSTICK_DOWN 1
+#define TENM_JOYSTICK_RIGHT 2
+#define TENM_JOYSTICK_LEFT 3
+
+int tenm_set_key(int number_key, ...);
+
+void tenm_set_focus_handler(void (*handler)(int));
+
+int tenm_joystick_init(int range);
+int tenm_joystick_map_axis(int direction, tenm_key key);
+int tenm_joystick_map_button(int button_index, tenm_key key);
+
+int tenm_get_key_status(void);
+
+int tenm_event_handle(void);
+
+#endif /* not __TENM_INPUT_H__ */

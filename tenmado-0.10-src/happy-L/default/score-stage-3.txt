@@ -1,0 +1,22 @@
+Comment	$Id: score-stage-3.txt,v 1.5 2003/11/24 02:24:40 oohara Exp $
+Comment	field name and field values are separated by TAB
+Comment	(therefore, TAB are not allowed in a comment)
+Comment	comment-only entry is not allowed
+Comment	each entry is _terminated_ by exactly one empty line
+Comment	(you must add a newline even if there is only one entry)
+Entry-Version	0
+Stage-Data-Version	0
+When	1057337216
+Uid	1024
+User-Name	developer
+Score-Sort	305828
+Score-Total	305828
+Number-Stage	6
+Score-Stage	1	0
+Score-Stage	2	0
+Score-Stage	3	305828
+Score-Stage	4	0
+Score-Stage	5	0
+Score-Stage	6	0
+Comment	don't forget the terminating empty line
+

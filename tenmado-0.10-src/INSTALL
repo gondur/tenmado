@@ -1,0 +1,99 @@
+how to install tenmado
+$Id: INSTALL,v 1.18 2012/01/28 12:30:13 oohara Exp $
+
+* requirement
+
+To compile tenmado, you need:
+
+1) a C library (libc) (GNU C Library is known to work)
+2) the Simple DirectMedia Layer library (libSDL)
+3) SDL_image (libSDL_image)
+
+To hack tenmado, you also need:
+
+1) autoconf
+2) automake
+3) flex
+4) bison
+
+* installation commands
+
+tenmado follows the standard 3-step installation process, that is:
+1) ./configure
+2) make
+3) make install
+
+* ./configure options
+
+** --with
+
+--without-posix
+Don't use _most_ (not all) of the POSIX features, that is:
+  - You must NOT run "make install" --- I don't know where I put necessary
+    files on a non-POSIX system.
+  - Image data are loaded from the directory happy-L/image/ in the current
+    directory.  High score data are saved in the directory save/ in the
+    current directory.  Default high score data are loaded from the directory
+    happy-L/default/ in the current directory.  All install directory options
+    (see below) are ignored.  In short, you should invoke tenmado as
+    "./tenmado" from the top directory of the source tree.
+  - Player name handling is disabled.
+  - The superuser check of --undump is disabled.
+  - These features are still required:
+    + stat() (from POSIX.1)
+    + ENOENT (from POSIX.1)
+    + fileno() (from POSIX.1)
+  - libbac/bac_entry.h does s/uid_t/int/g
+DON'T USE THIS OPTION UNLESS YOU KNOW WHAT YOU ARE DOING.  tenmado is
+designed for a POSIX system.
+
+** install directories
+
+--prefix
+Everything will be installed here by default.
+
+--bindir
+The executable will be installed in this directory.
+
+--datadir
+The image files (happy-L/image/*.png) will be installed in its
+subdirectory games/tenmado/ .
+
+--localstatedir
+The game will save the high score data in its subdirectory
+games/tenmado/ .
+
+--mandir
+The manpage will be installed in its subdirectory man6/ .
+
+
+The FHS way will be something like:
+./configure --prefix=/usr --bindir=/usr/games \
+  --localstatedir=/var --mandir=/usr/share/man
+
+If you have no root privilege and want to install tenmado under
+your home directory, try:
+./configure --prefix=/home/oohara/temp/tenmado
+Replace /home/oohara/temp/tenmado as appropriate.  Note that
+these directories must be specified in their absolute path.
+
+* the high score files
+
+The high score files (the files in games/tenmado/ in localstatedir)
+must be writable by the tenmado binary.  The recommended way to do this is
+to create a dedicated system group (usually called as "games"), install
+the high score files as 664 root:games and have the tenmado binary sgid games.
+
+"make install" makes the directory for the high score files, but it
+does NOT create or overwrite the high score files themselves.
+("make uninstall" always removes the high score files.)  To set their
+permission, use the --undump-default option of tenmado as follows:
+
+1) make install
+2) tenmado --undump-default
+3) chown root:games $localstatedir/games/tenmado/*
+4) chmod 664 $localstatedir/games/tenmado/*
+5) chown root:games $bindir/tenmado
+6) chmod 2755 $bindir/tenmado
+
+Replace $bindir and $localstatedir as appropriate.

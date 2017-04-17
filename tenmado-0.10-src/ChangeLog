@@ -1,0 +1,263 @@
+2012-01-31  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.10
+	* LICENSE, const.h: fixed copyright string
+
+2012-01-30  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.9
+	* INSTALL, README, README-ja-utf8, configure.ac: removed
+	  the libdb3 support
+	* configure.ac: use AC_DEFINE after AC_ARG_WITH, not in it
+	* configure.ac, Makefile.am, happy-L/Makefile.am,
+	  libtenm/Makefile.am: add the return value of sdl-config --libs
+	  (which usually contains a -l flag) to LIBS, not AM_LDFLAGS
+	* Makefile.am, happy-L/Makefile.am, libbac/Makefile.am,
+	  libtenm/Makefile.am: removed -Wconversion because it is too noisy
+	* Makefile.am, configure.ac: use the tar-ustar option of automake
+          instead of setting AMTAR
+	* configure.ac: fixed comments so that configure doesn't say
+	  "process this file with autoconf"
+	* Makefile.am, happy-L/Makefile.am, libbac/Makefile.am,
+	  libtenm/Makefile.am: fixed comments so that Makefile doesn't say
+	  "process this file with automake"
+	* configure.ac: added AC_CHECK_FUNCS([strerror]) because
+	  libbac/bac_load.c wants it
+	* libbac/bac_lexical.l: added added %option no* to fix the
+	  -Wunused-function warning
+	* libbac/bac_lexical.h: added yylex_destroy() declaration
+	* libbac/bac_lexical.h, libbac/bac_lexical.l, libbac/bac_parser.y,
+	  libbac/bac_string_to_array.c: use %option yylineno instead of
+	  counting the line number manually
+	* happy-L/close-system.c: removed the variable time_no_escape
+	  in the function close_system_ball_new() because it is unused
+	* happy-L/ending.c: fixed the return value of ending()
+	* happy-L/ending.c: fixed an error message
+
+2009-11-14  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.8
+	* libtenm/tenm_timer.c: uses an empty loop for maximum accuracy
+	* libbac/bac_truncate.c: fixed the error message when remove()
+	  failed
+
+2004-11-25  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.7
+	* happy birthday, L!
+	* happy-L/normal-enemy.c: added sanity checks after tenm_sqrt()
+	* libtenm/tenm_input.c: really fixed the default value of neutral_range
+	* tenmado.6: command line options use a minus sign, not a hyphen
+	* happy-L/result.c: reset timer at the beginning of the result report
+	* README: fixed typos
+
+2003-11-25  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.6
+	* happy birthday, L!
+	* happy-L/player-shot.c, libtenm/tenm_table.c: made sure that the
+	  action of the object that is added by the player (the player shot)
+	  is skipped only once (the frame when that object is added)
+	* happy-L/midnight.c, happy-L/overrun.c, happy-L/disconnection.c,
+	  happy-L/fud.c, happy-L/last-boss.c: don't modify my->attr or
+	  my->hit_mask in my->hit(), or the player shot may fly through
+	  the enemy
+	* Makefile.am, README-ja-sjis: added \r before each \n
+	* Makefile.am, happy-L/Makefile.am, libtenm/Makefile.am: added
+	  -Wno-long-long to CC_WARNINGS
+	* happy-L/player.c: int/double consistency in the boundary check
+	* happy-L/player-shot.c: your shot has no longer the same color
+	  as an enemy's shot
+	* libtenm/tenm_input.c: set default neutral_range to 8192
+	* main.c: set neutral_range to 8192
+	* libbac/bac_array.h, libbac/bac_entry.h, libtenm/tenm_input.c,
+	  libtenm/tenm_object.c, libtenm/tenm_object.h,
+	  libtenm/tenm_primitive.h, libtenm/tenm_table.c: fixed pointers
+	  to a function
+	* happy-L/player-shot.c: fixed typo in an error message
+	* libbac/bac_entry.h: includes config.h
+	* README, happy-L/tutorial.c: fixed typo
+	* happy-L/image.c: removed the unnecessary slash from the path of
+	  image files
+	* THANKS: updated the e-mail address of shinichiro.h
+	* happy-L/explosion.c: int/double consistency in the initial value
+	* happy-L/normal-enemy.c: don't decrement the "no escape" timer
+	  if it is not positive
+	* happy-L/disconnection.c, happy-L/fud.c: a dead enemy has low
+	  priority when we draw the window
+	* happy-L/explosion.c: explosion has low priority when we draw
+	  the window
+	* libtenm/tenm_table.c: added sanity check to
+	  tenm_table_detect_collision() to handle hit() of an object that
+	  deletes the object which collides with it
+	* happy-L/default/score-*.txt: updated
+
+2003-01-16  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.5
+	* libdb3 is now optional (still recommended and default)
+	* happy-L/disconnection.c, happy-L/fud.c, happy-L/image/*-damaged.png,
+	  happy-L/image.c, happy-L/intuition.c, happy-L/last-boss.c,
+	  happy-L/midnight.c, happy-L/normal-enemy.c, happy-L/overrun.c,
+	  happy-L/solution.c: better enemy damaging graphic
+	* configure.ac, happy-L/high-score.c, INSTALL, libbac/bac_load.c,
+	  libbac/bac_load.h, libbac/bac_save.c, libbac/bac_truncate.c:
+	  added (deprecated) --without-libdb3 support
+	* configure.ac, happy-L/high-score.c, happy-L/image.c,
+	  happy-L/result.h, INSTALL, libbac/bac_dump.h, libbac/bac_entry.h,
+	  save/Makefile.am, util.c: added (dangerous) --without-posix support
+	* score.c: reset extend_next whenever a game starts
+	* happy-L/intuition.c, happy-L/laser.c, happy-L/normal-shot.c:
+	  an enemy shoots at a random direction if it aims at you and if it
+	  and you are at the exacely same point
+	* happy-L/midnight.c: don't call midnight_bit_signal_to_bit() if
+	  the bit is already dead
+	* happy-L/last-boss.c: surprise_laser_act() uses laser_new() instead
+	  of laser_point_new()
+	* libtenm/tenm_timer.c: added clock accuracy auto-detection
+	* libtenm/tenm_object.c: the object name is now duplicated,
+	  no longer (const char *) but (char *)
+	* libbac/bac_array.h: fixed sanity check in bac_array_delete (s/1/i/)
+	* README, option.c, tenmado.6: fixed the description of --dump
+	  and --undump
+	* README: documented extend (additonal ship)
+	* README-ja-utf8: new file, Japanese translation
+	* README-ja-sjis: new file, generated from README-ja-utf8
+	* libbac/README: added more nonsense
+	* happy-L/high-score.c, libtenm/tenm_input.c, libtenm/tenm_math.c,
+	  libtenm/tenm_table.c, main.c, util.c, util.h: fixed memory leaks
+	* libbac/bac_lexical.h, libbac/bac_lexical.l,
+	  libbac/bac_string_to_array.c: uses yy_scan_string instead of
+	  a pipe hack
+	* chain.c, happy-L/ending.c, happy-L/high-score.c, happy-L/result.c,
+	  happy-L/stage-clear.c, happy-L/title.c, hit-status.c,
+	  libbac/bac_entry.c, libbac/bac_entry_to_string.c, score.c, ship.c:
+	  s/snprintf/sprintf/g because snprintf is a GNU extension
+	* libbac/bac_lexical.l: malloc && strncpy instead of strdup because
+	  strdup is from SVID
+	* libbac/*.c, libtenm/*.c: more strict sanity checks
+	* libtenm/tenm_graphic.c: fixed error message
+	* libtenm/tenm_object.c: don't delete mass if it is NULL
+	* util.c: fixed comment
+	* libbac/bac_string_to_array.c: added paranoid isprint checks
+	* Makefile.am: uses AC_CONFIG_HEADERS instead of AM_CONFIG_HEADER
+	* configure.ac: added more checks to please autoscan
+	* option.c: split the help message to avoid stupid gcc "509 chars"
+	  warning
+	* happy-L/default/score-stage-2.txt: updated
+	* THANKS: added shinichiro.h
+	* TODO: updated
+
+2003-01-04  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.4
+	* configure.ac: recongizes libdb-3 as well as libdb3 (thanks to
+	  shinichiro.h <g940455@mail.ecc.u-tokyo.ac.jp> for the bug report)
+	* README, happy-L/result.c, loop.c, option.c, option.h, tenmado.6:
+	  added --slow option
+	* README, main.c, option.c, option.h, tenmado.6:
+	  added --help and --version options
+	* libtenm/tenm_collision.c: fixed the "circle assumption" in
+	  tenm_collided_point_polygon() and tenm_collided_segment_segment2()
+	  (the radius should be 0.5, not 1)
+	* libtenm/tenm_graphic.c, libtenm/tenm_graphic.h: implemented
+	  the Bresenham algorithm for drawing a circle or a line (warning:
+	  these drawing functions contain toxic waste --- they're not pure
+	  Bresenham since I need a wide line)
+	* happy-L/intuition.c, happy-L/last-boss.c, happy-L/normal-shot.c,
+	  happy-L/solution.c: enemy shots are more distinguishable
+	* happy-L/player.c, happy-L/image/player-blue.png,
+	  happy-L/image/player-purple.png, happy-L/image/player-red.png:
+	  your weak point is more distinguishable (the sprites are too
+	  unrealistic, but this is a shoot-em-up, not a flight simulator)
+	* libtenm/tenm_graphic.c, libtenm/tenm_primitive.c,
+	  libtenm/tenm_primitive.h, libtenm/tenm_collision.c,
+	  libbac/bac_entry.h, libbac/bac_entry.c,
+	  libbac/bac_entry_to_string.c, libbac/bac_save.c, util.c:
+	  s/class/klass/ in favor of Python (not for C++ --- the headers
+	  don't have the extern "C" line, and I use "new" and "delete"
+	  as part of a function name)
+	* INSTALL: fixed the binary permission in the high score file example
+	  (the binary has no need to be group-writable)
+	* libbac/bac_lexical.l: fixed the line number in an error message
+	* score.c: code cleanup
+	* libbac/Makefile.am: added -8 to AM_LFLAGS just in case
+	* Makefile.am, happy-L/Makefile.am, libbac/Makefile.am,
+	  libtenm/Makefile.am: dropped -Wtraditional from CC_WARNINGS
+	  (I use string concatenation) and added -Wconversion
+	* happy-L/disconnection.c, happy-L/ending.c, happy-L/explosion.c,
+	  happy-L/fud.c, happy-L/high-score.c, happy-L/intuition.c,
+	  happy-L/laser.c, happy-L/last-boss.c, happy-L/message.c,
+	  happy-L/midnight.c, happy-L/normal-enemy.c, happy-L/overrun.c,
+	  happy-L/result.c, happy-L/solution.c, happy-L/stage-1.c,
+	  happy-L/stage-2.c, happy-L/stage-3.c, happy-L/stage-5.c,
+	  happy-L/stage-clear.c, happy-L/title.c, libbac/bac_entry.c,
+	  libbac/bac_entry_to_string.c, libbac/bac_load.c,
+	  libbac/bac_truncate.c, libtenm/tenm_graphic.c, chain.c,
+	  hit-status.c, score.c, ship.c:
+	  integer/floating point and signed/unsigned consistency
+	  (by using explicit cast)
+	* libbac/bac_entry_to_string.c: free unused memory
+	* COPYING: removed because this is same as GPL-2
+	* const.h: added COPYRIGHT_STRING
+	* LICENSE, happy-L/title.c: updated copyright year
+	* happy-L/default/score-*: updated
+	* TODO: updated
+
+2002-12-21  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.3
+	* libdb3 is now required
+	* libbac/*, happy-L/high-score.c, happy-L/high-score.h: new files,
+	  handling high score files
+	* Makefile.am, configure.ac, happy-L/result.c, happy-L/title.c:
+	  added high score file support
+	* option.c, option.h: new files, handling command line options
+	* loop.c, main.c: added command line option support
+	* libtenm/tenm_graphic.c, libtenm/tenm_graphic.h: added fullscreen
+	  support
+	* main.c: feeding the random seed
+	* libtenm/tenm_graphic.c, libtenm/tenm_graphic.h, main.c: fixed
+	  hardcoding the window name in a libtenm function
+	* README: minor editorial fix
+	* happy-L/title.c: fixed a typo in an error message
+	* happy-L/image/font-medium.png: fixed underscore
+	* INSTALL: added hacking information
+	* README: added command line options, ship bonus description,
+	  contact information and some history
+	* happy-L/image/Makefile.am, happy-L/image.c, util.c: install
+	  image files in $(datadir)/games/tenmado/image/ instead of
+	  $(datadir)/games/tenmado/
+	* loop.c: "average fps" message is sent to stdout instead of stderr
+	* Makefile.am cleanups
+	  - uses some AM_ variables
+	  - removed CC_OPTIMIZE because -g -O2 are in CFLAGS and I use
+	    AM_CFLAGS
+	  - don't use LDFLAGS for .a
+	  - use install-data-local instead of install-exec-local
+	    for image files
+	  - added AMTAR=ustar because GNU tar is not conforming to Posix
+	* TODO: updated
+
+2002-11-26  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.2
+	* happy birthday, L!  (well, it was November 25, but anyway)
+	* configure.ac: no longer uses arguments in AM_INIT_AUTOMAKE
+	* Makefile.am: removed duplicated CPPFLAGS definition
+	* Makefile.in: regenerated with automake 1.7 (the previous version
+	  was generated by automake 1.4)
+	* missing: now you can really redistribute it with the Artistic
+	  License (the previous version was under GPL only)
+	* INSTALL: added a note about --bindir
+	* icon.xpm: added for the Debian menu system
+	* ship.c: improved a comment
+	* happy-L/rotate-laser.c: fixed draw priority
+	* depcomp: uses the version in automake 1.7
+	* aclocal.m4: regenerated with aclocal in automake 1.7
+	* happy-L/player.c: fixed left/right typo in the tutorial
+
+2002-07-14  Oohara Yuuma  <oohara@libra.interq.or.jp>
+
+	* version 0.1
+	* initial release

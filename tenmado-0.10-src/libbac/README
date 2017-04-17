@@ -1,0 +1,13 @@
+libbac --- high score file library
+$Id: README,v 1.7 2003/01/15 22:44:05 oohara Exp $
+
+Files in this directory are for handling a high score file.
+You need Berkeley DB version 3 (libdb3) to build these files.
+You need aotuconf, automake, flex and bison in addition
+to hack these files.
+
+The parser assumes that NEWLINE (\n) and TAB (\t) are not printable.
+It checks them by isprint(), so it may fail to work under some locale.
+
+BAC are the initials one of my acquaintance (aka shumagorath II) uses
+when he enters his name in an arcade game.  I don't know his real name.

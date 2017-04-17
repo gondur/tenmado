@@ -1,0 +1,13 @@
+tenmado TODO list
+$Id: TODO,v 1.5 2003/01/07 18:28:34 oohara Exp $
+
+* better graphic (I'm not an artist, good image files wanted)
+* sound/music (explosion sound is a must for a shoot 'em up)
+* better error handling (check the return value of functions, more
+  error message)
+* more documentation/comment
+* split libbac/libtenm
+* swig interface to libbac/libtenm
+* add mouse support to libtenm (so that icbm3d can be ported to libtenm)
+* fix memory leaks (they are in getpwuid(), yylex or SDL --- I don't know
+  how to fix them)

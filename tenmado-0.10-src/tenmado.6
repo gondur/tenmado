@@ -1,0 +1,107 @@
+.\" $Id: tenmado.6,v 1.18 2004/08/07 12:58:04 oohara Exp $
+.TH TENMADO 6 "Wed, 15 Jan 2003" "Project Geeste" "tenmado manual"
+.SH NAME
+tenmado \- hard-core shoot 'em up game in blue-or-red world
+.SH SYNOPSIS
+.B tenmado
+[
+.BI "\-\-dump" " stage"
+]
+[
+.BI "\-\-full\-screen"
+]
+[
+.BI "\-\-help"
+]
+[
+.BI "\-\-slow"
+]
+[
+.BI "\-\-stage" " stage"
+]
+[
+.BI "\-\-undump" " stage"
+]
+[
+.BI "\-\-undump\-default"
+]
+[
+.BI "\-\-version"
+]
+.SH DESCRIPTION
+tenmado is a vertically scrolling, late 1990s style (that is, a massive
+number of enemy shots against a smaller-than-it-looks spaceship) shoot 'em
+up game.  A very accurate collision detection makes it a game of
+dexterity.  If something looks like a triangle, it is a triangle, not
+a rectangle of similar size.
+.P
+However, surviving is only 20% of the game.  The main feature of tenmado
+is the "color chain bonus".  You can get a very big score (about 100 times
+bigger than a normal enemy-destruction point) by destroying enemies of
+the same color successively.  It is easy or difficult depending on how
+greedy you are.
+.P
+In the game, use cursor keys to move, press space key to shoot (auto-repeat).
+A joystick is also available for move and shoot.  Note that you must
+plug the joystick before you invoke tenmado.  For more information,
+see the tutorial demo by choosing it from the menu in the title.
+.SH OPTIONS
+.TP
+.BI "\-\-dump" " stage"
+Write high score data to standard output and exit.  Usually you save
+the output in a file and later use that file as the input of
+.BR "\-\-undump" "."
+.I stage
+must be between 0 and 5.
+.I stage
+0 means total score.
+.I stage
+1 -- 5 means each stage score.
+.TP
+.BI "\-\-full\-screen"
+Run the game in the full screen mode.
+.TP
+.TP
+.BI "\-\-help"
+Print a help message and exit.
+.TP
+.BI "\-\-slow"
+Run the game at the half speed.  Technically, the length of waiting between
+each frame is doubled.  This slows down everything in the game, including
+your ship.  The idea is to study the enemy formations for a later (normal
+speed) play.  The animation may be rough because this option gives you
+only about 16 fps.  You can't enter the high score lists with this option.
+.TP
+.BI "\-\-stage" " stage"
+Start the game at the specified stage.
+.I stage
+must be between 1 and 5.
+Note that you can play only one stage (the specified one) and you can't
+enter the high score lists.
+.TP
+.BI "\-\-undump" " stage"
+Read high score data from standard input, save them and exit.
+The input is usually the output of
+.BR "\-\-dump" "."
+.I stage
+must be between
+0 and 5.
+.I stage
+0 means total score.
+.I stage
+1 -- 5 means each
+stage score.  Only the superuser may use this option.
+.TP
+.BI "\-\-undump\-default"
+If at least one high score list is empty, read the default high score data,
+save them and exit.  If not, do nothing.  The main purpose of this option is
+to create high score database files at installation time so that you can
+set their permission.
+.TP
+.BI "\-\-version"
+Print version information, license information and the disclaimer, then exit.
+.SH BUGS
+Please report any bugs you find to Oohara Yuuma
+<oohara@libra.interq.or.jp>.
+.SH AUTHOR
+Oohara Yuuma <oohara@libra.interq.or.jp>

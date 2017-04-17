@@ -1,0 +1,36 @@
+tenmado -- hard-core shoot 'em up game in blue-or-red world
+by Oohara Yuuma <oohara@libra.interq.or.jp>
+published by Project Geeste
+
+binary for win32
+on Thu,  4 Dec 2003
+by shinichiro.h <s31552@mail.ecc.u-tokyo.ac.jp>
+
+* what is tenmado
+
+tenmado is a vertically scrolling, late 1990s style (that is, a massive
+number of enemy shots against a smaller-than-it-looks spaceship) shoot 'em
+up game.  A very accurate collision detection makes it a game of
+dexterity.  If something looks like a triangle, it is a triangle, not
+a rectangle of similar size.
+
+However, surviving is only 20% of the game.  The main feature of tenmado
+is the "color chain bonus".  You can get a very big score (about 100 times
+bigger than a normal enemy-destruction point) by destroying enemies of
+the same color successively.  It is easy or difficult depending on how
+greedy you are.
+
+* about this package
+
+The binary in this package is tenmado 0.6 compiled by shinichiro.h
+<s31552@mail.ecc.u-tokyo.ac.jp> for win32 (that is, Windows).
+The executable is tenmado.exe .  No installation work is necessary.
+To uninstall, simply delete the related files.  High score information is
+saved under save/ .
+
+See the documents under doc/ for information about the game itself.
+The source code is available at:
+http://www.interq.or.jp/libra/oohara/tenmado/index.html
+
+Since I (Oohara Yuuma) don't have a win32 machine, I didn't test or even run
+any binary in this package.  Use this package at your own risk.
